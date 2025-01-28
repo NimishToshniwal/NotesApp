@@ -1,16 +1,10 @@
 from flask import Flask, request, jsonify
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
-
+from dbinit import get_db_connection
 # Initialize Flask app
 app = Flask(__name__)
-
-# MongoDB configuration
-app.config["MONGO_URI"] = "mongodb://localhost:27017/note_app"
-mongo = PyMongo(app)
-
-db = mongo.db.notes
 
 # Helper function to format note data
 def format_note(note):
